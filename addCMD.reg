@@ -1,0 +1,14 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\Folder\shell\cmd]
+@="@shell32.dll,-8506"
+
+[HKEY_CLASSES_ROOT\Folder\shell\cmd\command]
+@="C:\Windows\System32\cmd.exe cd \"%1\""
+
+;删除Extended可以不按shift打开命令行
+[HKEY_CLASSES_ROOT\Directory\Backgroud\shell\cmd]
+@="@shell32.dll,-8506"
+
+[HKEY_CLASSES_ROOT\Directory\Backgroud\shell\cmd\command]
+@="C:\Windows\System32\cmd.exe /s /k pushd \"%V\""
