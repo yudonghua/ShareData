@@ -1,0 +1,124 @@
+参考网页：https://blog.csdn.net/qq_22555107/article/details/78884261
+
+
+直接访问表之将数组作为表：
+// 下面原先的方法,是一个长长的swtich语句
+String today = "周日";
+Switch( dayForMonth % 7 ){
+    case 0 : 
+        today = "周日";
+    case 1 : 
+        today = "周一";   
+    case 2 :
+        today = "周二";   
+    case 3 :
+        today = "周三";   
+    case 4 :
+        today = "周四";   
+    case 5 :
+        today = "周五";   
+    default:
+        today = "周六";   
+}
+// 使用表驱动
+// 使用一个数组去存入一周的日期
+String [] weekday = new String[]{"周日","周一","周二","周三",
+    "周四","周五","周六"};
+String today = weekday [ dayForMonth % 7 ];
+
+
+直接访问表之用二维的数组去存放一个结果集：
+// 原来的代码
+if( (a && !c ) || (a && b && c)){
+    category = 1 ;     
+}else if( (b && ! a) || (a && c && !b)){
+    category = 2 ;     
+}else if ( c && !a && !b){
+    category = 3 ;     
+}else {
+    category = 0 ;     
+}
+
+// 转换为 ( 这里 是 三维 的结果转成二维 去存放)
+static int categoryTable[2][2]={
+    //!b!c   !bc   b!c   bc
+        0,   3,     2,    2, // !a    
+        1,   2,     1,    1, // a
+}
+// 使用
+category = categoryTable[1][0];
+
+
+索引访问表之将hashMap作为表,那么首先要构建 hash的 key - value
+// 存入 hashMap结构 key 是 weekday ,value 是 doSomething
+String [] weekday = new String[]{"周日","周一","周二","周三",
+    "周四","周五","周六"};
+String [] doSomething = new String[]{"出游","开会","上班","学习",
+    "运动","加班","休息","娱乐"}
+
+// 构建hash 的键值对   
+Map<String,Object> map = new HashMap();
+for(int i = 0; i < weekday.length; i++){
+    map.put( weekday[i],doSomething[i] );
+}
+// 取出hash 的值
+public static String doWhat (String today){
+    return map.get(today);
+}
+
+public static void main (String arge[]){
+    system.out.pringf(doWhat(weekday[ dayForMonth % 7 ]));
+}
+
+
+阶梯访问表
+阶梯访问表
+例子四: 用两个数组 
+0-59 分是不及格 F级 
+60- 79 是及格 E级 
+80-84 是普通 D级 
+85-89 是良好 C级 
+90 - 94 是优秀 B级 
+95-100 是太棒了 A级
+最重要的是, 我的表里面是存放了 区间的上界 , 用来区分等级
+int [] grade = {59,79,84,89,94,100}; 
+String [] level = {"F","E","D","C","B","A"},
+
+public String getLevel (int grade){
+    for( int i = 0 ; i < grade.length ; i++){
+        if(grade <= grade[i]){
+            return  level[i];
+        }
+    }
+}
+
+
+(加餐)方法访问表——可以通过java的反射机制去构建表
+public Class Wine{
+    public void setCountry(Stinrg info){
+        .....
+    }
+    public void setType(Stinrg info){
+        .....
+    }
+}
+
+Map<String,Object> map = new HashMap<>();
+map.put("所属国家","setCountry");
+map.put("葡萄酒类型","setType");
+
+public String findMethodByKey(String info){
+    return map.get(info);
+}
+
+public String setChinese(String method,String value){
+    Wine thyWine = new Wine();
+    String mothodName = findMethodByKey("所属国家");
+    Method method = thyWine.getClass.getMethod( name, Wine.class);
+    method.invoke(tblwine,value);
+}
+
+
+public static void main(String [] arge){
+    setChinese("所属国家","中国");
+}
