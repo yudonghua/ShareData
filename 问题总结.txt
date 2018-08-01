@@ -1,3 +1,11 @@
+右键时没有 在此处打开命令窗口（W）
+HKEY_CLASSES_ROOT\Directory\Backgroud\shell\cmd 去掉Extended属性
+补充： 
+HKEY_CLASSES_ROOT\Folder\shell\cmd 为右键文件时
+HKEY_CLASSES_ROOT\Directory\Backgroud\shell\cmd 为右键空白处时
+
+
+
 Tomcat 401 Error: 
 
 错误原因：Tomcat权限问题。
