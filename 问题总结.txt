@@ -1,3 +1,15 @@
+分组的前几名
+select * from (
+select  t.event_time,t.event_card,row_number() over(partition by t.event_card order by t.event_time desc) pm from ac_event t) as top where pm<4;
+SELECT event_card,MAX(event_time) FROM ac_event WHERE event_card IS NOT NULL group by event_card
+
+
+
+hql Dao.findPageByHql 可以找到分页对象
+HibernateDao new得来的不能直接运行方法 extends继承得来的可以直接运行内置方法
+
+
+
 右键时没有 在此处打开命令窗口（W）
 HKEY_CLASSES_ROOT\Directory\Backgroud\shell\cmd 去掉Extended属性
 补充： 
