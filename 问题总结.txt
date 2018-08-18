@@ -1,3 +1,39 @@
+熟悉jstl表达式和el表达式
+了解开源论坛框架，如discuzz
+GWT，Closure框架
+了解jndi jms
+ftp协议
+
+
+token url = generateUrlWithToken(url, secretKey)
+  protected static String generateUrlWithToken(String url, String secretKey) {
+        // token value = Md5(url + secretKey);
+        url = formatUrl(url);
+        String token = MD5Util.md5(url + secretKey);
+        token = token + " ";
+        if (url.indexOf("?") != -1) {
+            return url + "&token=" + token;
+        }
+
+        return url + "?token=" + token;
+    }
+获取卡片：http://localhost/api/serviceApi/card/getCardList?token=D2B441CE7A540305C85CAE8E65ACF7CC
+挂失卡片：http://localhost/api/serviceApi/card/lossCard?token=3E2CFB30A154B5DF583417B5AE64C78B
+{"userId": 4, "personId": 3, "cardNo": "2697177132"}
+
+
+
+
+门禁事件读取
+com.hikvision.cms.acs.common.mq.doorstate.thread.DoorStateMessageProcessWorkThread
+
+
+
+增量包不需要版本号
+安装包需要修改 constants.properties 里的version为V2.9.1_20171220_KF20180801_034
+
+
+
 分组的前几名
 select * from (
 select  t.event_time,t.event_card,row_number() over(partition by t.event_card order by t.event_time desc) pm from ac_event t) as top where pm<4;
@@ -30,6 +66,32 @@ D:\apache-tomcat-8.5.24\conf\tomcat-users.xml 添加：
   <user username="tomcat" password="tomcat" roles="manager"/>
   <role rolename="ws_client_auth_role"/> 
   <user username="admin" password="123456" roles="ws_client_auth_role"/> 
+
+
+
+Idea配置：
+File>settings>File and Code Templates>include>Type/File Header
+Type：
+/**
+* <p></p>
+* @author yuhuadong6 ${DATE} ${TIME}
+* @version V1.0  
+* @modificationHistory=========================逻辑或功能性重大变更记录
+* @modify by user: {修改人} ${DATE}
+* @modify by reason:{方法名}:{原因}
+*/
+
+File>settings>Live Templates>添加user>mc
+/**
+ * 方法的功能描述：TODO
+ * @author yuhuadong6 $date$ $time$
+ * @param $param$
+ * @return $return$
+ * @throws $throws$
+ * @modificationHistory =========================逻辑或功能性重大变更记录
+ * @modify by user: {修改人} ${TIME}
+ * @modify by reason:{原因}
+ */
 
 
 
