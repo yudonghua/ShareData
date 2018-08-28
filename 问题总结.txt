@@ -1,3 +1,44 @@
+IDEA关联GIT
+https://www.cnblogs.com/summer-fate/p/7262994.html
+1.在IDEA中设置Git，在File-->Setting->Version Control-->Git-->Path to Git executable选择你的git安装后的git.exe文件，然后点击Test，测试是否设置成功
+2.在IDEA中设置GitHub，File-->Setting->Version Control-->GibHub
+Host：github.com
+Token：点击Create API Token，输入在github中注册的用户名和密码生成token
+点击Test，测试是否连接成功
+3.创建本地仓库，VCS-->Import into Version Control-->Create Git Repository...
+
+
+.gitignore 
+是你的基本项目目录中的文件列表，git将忽略本地库中添加/更新。
+.gitkeep 
+由于git删除或者不将空目录添加到存储库。gitkeep是一个 hack ( 我不认为它被正式命名为git的一部分)，用于在仓库中保留空目录。
+
+
+
+mybatis 好像不能重载
+
+
+
+hql 学习 DetachedCriteria Restrictions
+
+
+
+https://www.cnblogs.com/zhaoyan001/p/6078196.html
+https://www.cnblogs.com/nww57/p/4990969.html
+map循环：
+for (Entry<String, String[]> entry : paraMap.entrySet())  
+        {  
+            values = entry.getValue();  
+            // System.out.println(values[0]);  
+        }
+尽可能把功能方法化，一个方法不宜过长。
+java中内嵌的SQL语句尽量使用大写的形式，以减轻ORACLE解析器的解析负担。
+代码重构
+手动置成null的意义
+减少使用new，使用clone();
+位运算
+
+
 熟悉jstl表达式和el表达式
 了解开源论坛框架，如discuzz
 GWT，Closure框架
