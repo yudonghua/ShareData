@@ -1,3 +1,55 @@
+postman获取浏览器Cookie
+
+
+volatile只能保证有序性和可见性，比如new 变量（）是三步操作的，所以在单例中双重校验是需要volatile的，但并不能保证i++操作。
+
+
+svn如何部分checkout
+
+
+chrome JS断点调试 network加载了文件但是source找不到
+原因：js文件异步加载
+解决：在对应的js文件中加上    //@ sourceURL=${name}.js
+
+
+springmvc 中文文档 https://www.w3cschool.cn/spring_mvc_documentation_linesh_translation/spring_mvc_documentation_linesh_translation-ue3i2846.html
+
+
+登录安全，一次只允许一个用户登录
+https://blog.csdn.net/u012373815/article/details/77408306
+获取所有会话
+https://segmentfault.com/q/1010000012218823/a-1020000012218913
+
+
+
+在防止用户刷新页面的时候
+通过重新跳转到相应页面 model.addAttribute失效
+
+
+
+enum
+nosql
+负载均衡
+
+
+
+1、@controller 控制器（注入服务）
+2、@service 服务（注入dao）
+3、@repository dao（实现dao访问）
+4、@component （把普通pojo实例化到spring容器中，相当于配置文件中的<bean id="" class=""/>）
+
+
+spring三种拦截服务
+Filter,Interceptor,Aspect
+
+
+activemq topic模式
+Coverity
+jenkins
+web四大作用域
+同一个类不同对象this?
+
+
 IDEA关联GIT
 https://www.cnblogs.com/summer-fate/p/7262994.html
 1.在IDEA中设置Git，在File-->Setting->Version Control-->Git-->Path to Git executable选择你的git安装后的git.exe文件，然后点击Test，测试是否设置成功
