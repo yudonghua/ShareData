@@ -1,3 +1,34 @@
+mysql ignore、replace:避免插入重复记录
+postgresql ctid:去重
+查看索引
+SQL执行计划
+sql存储过程
+sql函数，视图，报表,with as,递归
+
+数据库连接数满掉排查方案
+查看线程被占用情况 
+1.jps -lvm 找出对应pid
+2.jstack -l pid 查看具体
+查看数据库执行的SQL
+
+
+
+重命名时一直提示存在连接
+//中断所有连接
+SELECT pg_terminate_backend(pid)
+FROM pg_stat_activity
+WHERE datname='cmsdb' AND pid<>pg_backend_pid();
+//重命名
+alter database "cmsdb" rename to "cmsdb29"
+
+
+通过反射修改private,final属性值，泛型添加不同类
+final值是可以通过反射修改的 但是 八个基本类型和""直接产生的的String由于内联优化修改后获取不了修改后的值
+
+
+spring 中 bean 的理解
+
+
 Eclipse vs. IDEA快捷键对比大全
 
 
