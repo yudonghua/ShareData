@@ -1,7 +1,38 @@
+常用认证方式
+》》WWW-Authenticate 认证
+401请求头包含 realm(与用户名相关)，nonce(随机数)
+返回
+authenticate.put("realm",authMap.get("Digest realm"));
+authenticate.put("nonce",authMap.get("nonce"));
+authenticate.put("uri",url);
+authenticate.put("algorithm","MD5");
+authenticate.put("qop","auth");
+authenticate.put("nc","00000001");
+authenticate.put("cnonce","f0703bbf420cc94c");
+String md5A1 = MD5Util.md5(user+":"+authenticate.get("realm")+":"+password).toLowerCase();
+String md5A2 = MD5Util.md5("PUT:"+url).toLowerCase();
+String inner = authenticate.get("nonce")+":"+authenticate.get("nc")+":"+authenticate.get("cnonce")+":"+authenticate.get("qop");
+authenticate.put("response",getResponseText(md5A1,inner,md5A2));
+putMethod.setRequestHeader("Authorization","Digest username="+user+","+authenticate.toString().replaceAll("\\{|\\}",""));
+putMethod.setRequestBody(content);
+》》token 认证
+MD5(URL+JSON+SECRECT) JSON中包含appkey.
+
+把行合并成列
+select 
+MAX(CASE extend_property_code WHEN 'connectMethod' THEN extend_value END) AS ip ,
+MAX(CASE extend_property_code WHEN 'port' THEN extend_value END) AS port
+from ac_device_extend_value where device_basic_id = 78 
+
+合并两行
+select isnull(NAME1,NAME2) as NAME3 from tablename
+
+activemq的使用
+
 mysql ignore、replace:避免插入重复记录
 postgresql ctid:去重
 查看索引
-SQL执行计划
+SQL执行计划 explain
 sql存储过程
 sql函数，视图，报表,with as,递归
 
