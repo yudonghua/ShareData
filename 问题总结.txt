@@ -1,3 +1,45 @@
+数据库拷贝
+1. 只导出postgres数据库的数据，不包括模式 -s
+   pg_dump -U postgres -f /postgres.sql -s postgres(数据库名)
+
+2. 导出postgres数据库（包括数据）
+   pg_dump -U postgres -f /postgres.sql  postgres(数据库名)
+
+3. 导出postgres数据库中表test01的数据
+   create database "test01" with owner="postgres" encoding='utf-8';(单引号，双引号不能错)
+   pg_dump -U postgres -f /postgres.sql -t test01 postgres(数据库名)
+
+4. 导出postgres数据库中表test01的数据,以insert语句的形式
+   pg_dump -U postgres -f /postgres.sql -t test01 --column-inserts postgres(数据库名)
+
+5. 恢复数据到bk01数据库
+  psql -U postgres -f /postgres.sql bk01(数据库名)
+
+
+net.sf.json "null"与"[]"系列的坑
+"{\"order\":{\"visitorTogether\":\"{}\"}}"
+
+SQL如果是null则返回0（返回值替换）
+select COALESCE(incount,0) incount
+
+SQL添加自定义列
+
+SQL自定义排序
+select * from ac_event_type
+order by ( 
+case is_use     
+when '11' then 1     
+when '10' then 2     
+when '01' then 3
+else 0
+end 
+)
+
+SQL字符串拼接（多行转一行并拼接）
+select ep_classes, ep_name = (stuff((select ',' + ep_name from ep_detail where ep_classes = 
+    a.ep_classes for xml path('')),1,1,'')) from ep_detail a group by ep_classes
+
+
 常用认证方式
 》》WWW-Authenticate 认证
 401请求头包含 realm(与用户名相关)，nonce(随机数)
